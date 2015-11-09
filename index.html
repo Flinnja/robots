@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TayBot</title>
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io()
+      socket.on('paint', function(colour){
+        console.log("Taybot message", colour)
+        $('body').css('background-color', colour)
+      })
+    </script>
+    <h1>Welcome to the home of tayBot</h1>
+  </body>
+</html>
