@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Flinnja/robots#readme",
   "dependencies": {
     "dotenv": "^1.2.0",
+    "node-wit": "^2.0.0",
     "slack-client": "^1.4.1"
   }
 }
