@@ -44,6 +44,14 @@ function slackBot(io){
         }
         else response = 'What colour would you like? I can paint it red, orange, yellow, green, blue, purple or pink!'
       }
+      else if(message.text.indexOf('dance')>-1){
+        io.emit('dance')
+        response = 'I make the moves up as I go!'
+      }
+      else if(message.text.indexOf('stop')>-1){
+        io.emit('stop')
+        response = "Can't stop, wont stop moving..."
+      }
       else{response = "Sorry, I don't know what you mean"}
       channel.send(response)
     }

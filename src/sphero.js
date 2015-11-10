@@ -1,17 +1,31 @@
 var Cylon = require('cylon')
 
-Cylon.robot({
-  connections: {
-    sphero: { adaptor: 'sphero', port: '/dev/tty.Sphero-YRG-AMP-SPP'}
-  },
+function taySphere(io){
+  Cylon.robot({
+    name: 'taySphere',
 
-  devices: {
-    sphero: { driver: 'sphero'}
-  },
+    connections: {
+      sphero: { adaptor: 'sphero', port: '/dev/tty.Sphero-YRG-AMP-SPP'}
+    },
 
-  work: function(my){
-    every((1).second(), function(){
-      my.sphero.roll(60, Math.floor(Math.random() * 360))
-    })
-  }
-}).start()
+    devices: {
+      sphero: { driver: 'sphero'}
+    },
+
+    work: function(my){
+      io.on('dance', function(){
+        console.log('dancing')
+        every((1).second(), function(){
+          my.sphero.roll(20, Math.floor(Math.random() * 360))
+        })
+      })
+      io.on('stop', function(){
+        my.sphero.stop()
+      })
+    }
+  })
+
+  Cylon.start()
+}
+
+module.exports = taySphere
