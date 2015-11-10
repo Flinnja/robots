@@ -1,7 +1,7 @@
 var app = require('express')()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
-var tayBot = require('./slackBot.js')(io)
+var tayBot = require('./src/slackBot.js')(io)
 
 app.get('/', function(req,res){
   res.sendFile(__dirname + '/index.html')
