@@ -15,8 +15,7 @@
       })
       var socket = io()
       socket.on('paint', function(colour){
-        console.log("Taybot message", colour)
-        $('body').css('background-color', colour)
+        setColours(makeColour(colour))
       })
     </script>
     <h1>Welcome to the home of tayBot Prime</h1>
