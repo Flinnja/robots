@@ -1,27 +1,33 @@
+var colourSpaces = {
+  'random': randBetween(0,1),
+  'red': randBetween(.94,1.02),
+  'orange': randBetween(.02,.12),
+  'yellow': randBetween(.12,.19),
+  'green': randBetween(.19,.47),
+  'blue': randBetween(.47,.73),
+  'purple': randBetween(.73,.81),
+  'pink': randBetween(.81,.94)
+}
+
+function randBetween(min,max){
+  return Math.random()*(max-min)+min
+}
+
 function makeColour(range){
-  var goldenRatio = 0.618033988749895
-  var h = Math.random()
-  h += goldenRatio
+  var h = colourSpaces[range]
   h %= 1
-  return HSVtoRGB(h, .5, .95)
+  return HSVtoRGB(h, .7, .95)
 }
 
 function setColours(rgb){
   r = rgb.r
   g = rgb.g
   b = rgb.b
-  r1 = limitColour((255 - r)+100)
-  g1 = limitColour((255 - g)+100)
-  b1 = limitColour((255 - b)+100)
-  console.log(r1,g1,b1)
+  r1 = ((255 - r)+100)%255
+  g1 = ((255 - g)+100)%255
+  b1 = ((255 - b)+100)%255
   $("body").css({'background-color': 'rgb('+r+","+g+","+b+")",
                   'color': 'rgb('+r1+","+g1+","+b1+")"})
-}
-
-function limitColour(colour){
-  if(colour<0) return 255+colour
-  else if(colour>255) return colour-255
-  else return colour
 }
 
 function HSVtoRGB(h, s, v) {
