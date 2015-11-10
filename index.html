@@ -3,17 +3,23 @@
   <head>
     <title>TayBot</title>
     <link rel="stylesheet" href="css/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700|Leckerli+One' rel='stylesheet' type='text/css'>
+    <script src='js/randColors.js'></script>
   </head>
   <body>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+      $(function(){
+        setColours(makeColour('random'))
+      })
       var socket = io()
       socket.on('paint', function(colour){
         console.log("Taybot message", colour)
         $('body').css('background-color', colour)
       })
     </script>
-    <h1>Welcome to the home of tayBot</h1>
+    <h1>Welcome to the home of tayBot Prime</h1>
+    <p>tayBot is currently feeling: Incomplete</p>
   </body>
 </html>
