@@ -13,14 +13,19 @@ function taySphere(io){
     },
 
     work: function(my){
+      dancing = false
       io.on('dance', function(){
-        console.log('dancing')
-        every((1).second(), function(){
-          my.sphero.roll(20, Math.floor(Math.random() * 360))
-        })
+        dancing = true
       })
       io.on('stop', function(){
+        dancing = false
         my.sphero.stop()
+      })
+      every((1).second(), function(){
+        if(dancing){
+          my.sphero.roll(20, Math.floor(Math.random() * 360))
+          my.sphero.stop()
+        }
       })
     }
   })
