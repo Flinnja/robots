@@ -23,14 +23,22 @@ function taySphere(io){
 
     work: function(my){
       dancing = false
+      wandering = false
+
+      io.on('wander', function(){
+        dancing = false
+        wandering = true
+      })
 
       io.on('dance', function(){
+        wandering = false
         dancing = true
       })
 
       io.on('stop', function(){
+        wandering = false
         dancing = false
-        // my.sphero.stop()
+        my.sphero.stop()
       })
 
       io.on('paint', function(colour){
@@ -41,6 +49,9 @@ function taySphere(io){
         if(dancing){
           my.sphero.roll(20, Math.floor(Math.random() * 360))
           my.sphero.stop()
+        }
+        else if(wandering){
+          my.sphero.roll(60, Math.floor(Math.random() * 360))
         }
       })
     }

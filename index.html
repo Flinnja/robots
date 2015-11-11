@@ -20,6 +20,10 @@
         $('.status').text('Dancing!')
       })
 
+      socket.on('wander', function(){
+        $('.status').text('Going for a stroll.')
+      })
+
       socket.on('stop', function(){
         $('.status').text("J chillin'")
       })

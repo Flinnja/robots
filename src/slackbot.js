@@ -55,6 +55,11 @@ function slackBot(io){
         response = 'I make the moves up as I go!'
       }
 
+      else if(message.text.includes('wander')){
+        io.emit('wander')
+        response = "I'm off for a stroll then!"
+      }
+
       else if(message.text.includes('stop')){
         io.emit('stop')
         response = "Can't stop, wont stop moving..."
