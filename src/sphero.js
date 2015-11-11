@@ -1,4 +1,13 @@
 var Cylon = require('cylon')
+var colourSpaces = {
+  'red': '0xFF0000',
+  'orange': '0xFFAA00',
+  'yellow': '0xFFFF00',
+  'green': '0x00FF00',
+  'blue': '0x0000FF',
+  'purple': '0xAA00FF',
+  'pink': '0xFF00FF'
+}
 
 function taySphere(io){
   Cylon.robot({
@@ -14,13 +23,20 @@ function taySphere(io){
 
     work: function(my){
       dancing = false
+
       io.on('dance', function(){
         dancing = true
       })
+
       io.on('stop', function(){
         dancing = false
         my.sphero.stop()
       })
+
+      io.on('paint', function(){
+
+      })
+
       every((1).second(), function(){
         if(dancing){
           my.sphero.roll(20, Math.floor(Math.random() * 360))

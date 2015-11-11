@@ -1,6 +1,7 @@
 var dotenv = require('dotenv')
 dotenv.load()
 var Slack = require('slack-client')
+var responses = require('./responses.js')
 
 slackToken = process.env.SLACK_KEY
 autoRecconect = true
@@ -17,18 +18,23 @@ function slackBot(io){
     channel = slackBot.getChannelGroupOrDMByID(message.channel)
     user = slackBot.getUserByID(message.user)
     if(message.text.includes('tay')){
+
       if(message.text.includes("hate")){
         response = "Haters gonna hate, hate, hate, hate, hate."
       }
+
       else if(message.text.includes("play")){
         response = "Players gonna play, play, play, play play."
       }
+
       else if(message.text.includes("fake")){
         response = "Fakers gonna fake, fake, fake, fake, fake."
       }
+
       else if(message.text.includes("heartbreak")){
         response = "Heartbreakers gonna break, break, break, break, break."
       }
+
       else if(message.text.includes("paint")){
         var colour = null
         if(message.text.includes('red')) colour = 'red'
@@ -44,14 +50,17 @@ function slackBot(io){
         }
         else response = 'What colour would you like? I can paint it red, orange, yellow, green, blue, purple or pink!'
       }
+
       else if(message.text.includes('dance')){
         io.emit('dance')
         response = 'I make the moves up as I go!'
       }
+
       else if(message.text.includes('stop')){
         io.emit('stop')
         response = "Can't stop, wont stop moving..."
       }
+
       else{response = "Sorry, I don't know what you mean"}
       channel.send(response)
     }
