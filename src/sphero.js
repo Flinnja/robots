@@ -33,8 +33,8 @@ function taySphere(io){
         my.sphero.stop()
       })
 
-      io.on('paint', function(){
-
+      io.on('paint', function(colour){
+        my.sphero.color(colourSpaces[colour])
       })
 
       every((1).second(), function(){

@@ -1,7 +1,6 @@
 var dotenv = require('dotenv')
 dotenv.load()
 var Slack = require('slack-client')
-var responses = require('./responses.js')
 
 slackToken = process.env.SLACK_KEY
 autoRecconect = true
