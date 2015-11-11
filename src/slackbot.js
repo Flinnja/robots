@@ -16,39 +16,39 @@ function slackBot(io){
   slackBot.on('message', function(message){
     channel = slackBot.getChannelGroupOrDMByID(message.channel)
     user = slackBot.getUserByID(message.user)
-    if(message.text.indexOf('tay')>-1){
-      if(message.text.indexOf("hate")>-1){
+    if(message.text.includes('tay')){
+      if(message.text.includes("hate")){
         response = "Haters gonna hate, hate, hate, hate, hate."
       }
-      else if(message.text.indexOf("play")>-1){
+      else if(message.text.includes("play")){
         response = "Players gonna play, play, play, play play."
       }
-      else if(message.text.indexOf("fake")>-1){
+      else if(message.text.includes("fake")){
         response = "Fakers gonna fake, fake, fake, fake, fake."
       }
-      else if(message.text.indexOf("heartbreak")>-1){
+      else if(message.text.includes("heartbreak")){
         response = "Heartbreakers gonna break, break, break, break, break."
       }
-      else if(message.text.indexOf("paint")>-1){
+      else if(message.text.includes("paint")){
         var colour = null
-        if(message.text.indexOf('red')>-1) colour = 'red'
-        else if(message.text.indexOf('orange')>-1) colour = 'orange'
-        else if(message.text.indexOf('yellow')>-1) colour = 'yellow'
-        else if(message.text.indexOf('green')>-1) colour = 'green'
-        else if(message.text.indexOf('blue')>-1) colour = 'blue'
-        else if(message.text.indexOf('purple')>-1) colour = 'purple'
-        else if(message.text.indexOf('pink')>-1) colour = 'pink'
+        if(message.text.includes('red')) colour = 'red'
+        else if(message.text.includes('orange')) colour = 'orange'
+        else if(message.text.includes('yellow')) colour = 'yellow'
+        else if(message.text.includes('green')) colour = 'green'
+        else if(message.text.includes('blue')) colour = 'blue'
+        else if(message.text.includes('purple')) colour = 'purple'
+        else if(message.text.includes('pink')) colour = 'pink'
         if(colour){
           io.emit('paint', colour)
           response = 'Painting it '+colour+' for you'
         }
         else response = 'What colour would you like? I can paint it red, orange, yellow, green, blue, purple or pink!'
       }
-      else if(message.text.indexOf('dance')>-1){
+      else if(message.text.includes('dance')){
         io.emit('dance')
         response = 'I make the moves up as I go!'
       }
-      else if(message.text.indexOf('stop')>-1){
+      else if(message.text.includes('stop')){
         io.emit('stop')
         response = "Can't stop, wont stop moving..."
       }
