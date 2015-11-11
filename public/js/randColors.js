@@ -14,7 +14,6 @@ function randBetween(min,max){
 }
 
 function makeColour(range){
-  console.log("painting a colour")
   var h = colourSpaces[range]()
   h %= 1
   return HSVtoRGB(h, .7, .95)

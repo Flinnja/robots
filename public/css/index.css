@@ -1,14 +1,21 @@
 body{
   color: rgb(255,0,0);
 }
-p{
-  padding-top: 5%;
-  font-family: 'Montserrat Alternates', sans-serif;
-  text-align: center;
-  font-size: 1.5em;
-}
+
 h1{
   font-size: 4em;
   font-family: 'Leckerli One', cursive;
   text-align: center;
+}
+
+p{
+  padding-top: 5%;
+  padding-left: 35%;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+.status{
+  padding-left: 5px;
 }

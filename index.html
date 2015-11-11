@@ -13,13 +13,22 @@
       $(function(){
         setColours(makeColour('random'))
       })
+
       var socket = io()
-      socket.on('dance', function(){console.log("dancing")})
+
+      socket.on('dance', function(){
+        $('.status').text('Dancing!')
+      })
+
+      socket.on('stop', function(){
+        $('.status').text("J chillin'")
+      })
+
       socket.on('paint', function(colour){
         setColours(makeColour(colour))
       })
     </script>
     <h1>Welcome to the home of tayBot Prime</h1>
-    <p>tayBot is currently feeling: Incomplete</p>
+    <p>tayBot is currently: </p><p class="status"> Out of touch.</p>
   </body>
 </html>
