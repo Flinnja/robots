@@ -1,12 +1,12 @@
 var Cylon = require('cylon')
 var colourSpaces = {
-  'red': '0xFF0000',
-  'orange': '0xFFAA00',
-  'yellow': '0xFFFF00',
-  'green': '0x00FF00',
-  'blue': '0x0000FF',
-  'purple': '0xAA00FF',
-  'pink': '0xFF00FF'
+  'red': 'FF0000',
+  'orange': 'FF9900',
+  'yellow': 'FFBC00',
+  'green': '00FF00',
+  'blue': '0000FF',
+  'purple': 'AA00FF',
+  'pink': 'FF00FF'
 }
 
 function taySphere(io){
@@ -30,7 +30,7 @@ function taySphere(io){
 
       io.on('stop', function(){
         dancing = false
-        my.sphero.stop()
+        // my.sphero.stop()
       })
 
       io.on('paint', function(colour){

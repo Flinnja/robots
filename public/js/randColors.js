@@ -1,12 +1,12 @@
 var colourSpaces = {
-  'random': randBetween(0,1),
-  'red': randBetween(.94,1.02),
-  'orange': randBetween(.02,.12),
-  'yellow': randBetween(.12,.19),
-  'green': randBetween(.19,.47),
-  'blue': randBetween(.47,.73),
-  'purple': randBetween(.73,.81),
-  'pink': randBetween(.81,.94)
+  'random': function(){return randBetween(0,1)},
+  'red': function(){return randBetween(.94,1.02)},
+  'orange': function(){return randBetween(.02,.12)},
+  'yellow': function(){return randBetween(.12,.19)},
+  'green': function(){return randBetween(.19,.47)},
+  'blue': function(){return randBetween(.47,.73)},
+  'purple': function(){return randBetween(.73,.81)},
+  'pink': function(){return randBetween(.81,.94)}
 }
 
 function randBetween(min,max){
@@ -14,7 +14,8 @@ function randBetween(min,max){
 }
 
 function makeColour(range){
-  var h = colourSpaces[range]
+  console.log("painting a colour")
+  var h = colourSpaces[range]()
   h %= 1
   return HSVtoRGB(h, .7, .95)
 }

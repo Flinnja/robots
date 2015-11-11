@@ -4,7 +4,7 @@ var http = require('http').Server(app)
 var io = require('socket.io')(http)
 var ioListener = require('socket.io/node_modules/socket.io-client')('http://localhost:3000')
 var tayBot = require('./src/slackBot.js')(io)
-var taySphere = require('./src/sphero.js')(ioListener)
+// var taySphere = require('./src/sphero.js')(ioListener)
 
 app.use(express.static('public'));
 
