@@ -11,7 +11,7 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function(){
-        setColours(makeColour('random'))
+        setColours(makeColour('colour'))
       })
 
       var socket = io()
@@ -29,7 +29,7 @@
       })
 
       socket.on('paint', function(colour){
-        if(colour != black && colour != white){
+        if(colour != 'black' && colour != 'white'){
           setColours(makeColour(colour))
         }
       })
@@ -45,7 +45,11 @@
       })
     </script>
     <h1>Welcome to the home of tayBot Prime</h1>
-    <p>tayBot is currently: </p><p class="status">Out of touch</p>
-    <p>tayBot RL is currently: </p><p class="body-status">Offline.</p>
+    <div>
+      <p>tayBot is currently: </p><p class="status">Out of touch</p>
+    </div>
+    <div>
+      <p>tayBot RL is currently: </p><p class="body-status">Offline.</p>
+    </div>
   </body>
 </html>

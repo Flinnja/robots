@@ -1,5 +1,5 @@
 var colourSpaces = {
-  'random': function(){return randBetween(0,1)},
+  'colour': function(){return randBetween(0,1)},
   'red': function(){return randBetween(.94,1.02)},
   'orange': function(){return randBetween(.02,.12)},
   'yellow': function(){return randBetween(.12,.19)},
