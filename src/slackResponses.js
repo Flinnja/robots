@@ -3,26 +3,26 @@ var respondTo = function(msg,usr,io){
   if(msg.includes('tay')){
 
     if(msg.includes("tuesday")){
-      response = "Is it taco tuesday?! :taco:"
+      response += "Is it taco tuesday?! :taco: \n"
     }
 
-    else if(msg.includes("hate")){
-      response = "Haters gonna hate, hate, hate, hate, hate."
+    if(msg.includes("hate")){
+      response += "Haters gonna hate, hate, hate, hate, hate. \n"
     }
 
-    else if(msg.includes("play")){
-      response = "Players gonna play, play, play, play play."
+    if(msg.includes("play")){
+      response += "Players gonna play, play, play, play play. \n"
     }
 
-    else if(msg.includes("fake")){
-      response = "Fakers gonna fake, fake, fake, fake, fake."
+    if(msg.includes("fake")){
+      response += "Fakers gonna fake, fake, fake, fake, fake. \n"
     }
 
-    else if(msg.includes("heartbreak")){
-      response = "Heartbreakers gonna break, break, break, break, break."
+    if(msg.includes("heartbreak")){
+      response += "Heartbreakers gonna break, break, break, break, break. \n"
     }
 
-    else if(msg.includes("paint")){
+    if(msg.includes("paint")){
       var colour = null
       if(msg.includes('red')) colour = 'red'
       else if(msg.includes('orange')) colour = 'orange'
@@ -31,43 +31,43 @@ var respondTo = function(msg,usr,io){
       else if(msg.includes('blue')) colour = 'blue'
       else if(msg.includes('purple')) colour = 'purple'
       else if(msg.includes('pink')) colour = 'pink'
-      else if (msg.includes('random') || msg.includes('anything') || msg.includes('any colour') || msg.includes('any color')) colour = 'random'
-      else if(msg.includes('black')) response = 'Get out of here, Mick'
-      else if(msg.includes('white') || msg.includes('grey') || msg.includes('gray')) response = "I'm not really into shades of grey, sorry."
+      else if (msg.includes('random') || msg.includes('anything') || msg.includes('any colour') || msg.includes('any color')) colour = 'colour'
+      else if(msg.includes('black')) response += 'Get out of here, Mick. \n'
+      else if(msg.includes('white') || msg.includes('grey') || msg.includes('gray')) response += "I'm not really into shades of grey, sorry. \n"
       if(colour){
         io.emit('paint', colour)
-        response = "We are in screaming "+colour+"!"
+        response += "We are in screaming "+colour+"! \n"
       }
-      else response = 'You gotta tell me what colour you want!'
+      else response += 'You gotta tell me what colour you want! \n'
     }
 
-    else if(msg.includes('dance')){
+    if(msg.includes('dance')){
       io.emit('dance')
-      response = 'I make the moves up as I go!'
+      response += 'I make the moves up as I go! \n'
     }
 
-    else if(msg.includes('wander')){
+    if(msg.includes('wander') || msg.includes('stroll') || msg.includes('explore')){
       io.emit('wander')
-      response = "I'll find wonderland."
+      response += "I'll find wonderland. \n"
     }
 
-    else if(msg.includes('stop')){
+    if(msg.includes('stop')){
       io.emit('stop')
-      response = "Can't stop, wont stop moving..."
+      response += "Can't stop, wont stop moving... \n"
     }
 
-    else if(msg.includes('wake up')){
+    if(msg.includes('wake up')){
       io.emit('wake')
-      response = "I wake up, I'm alive."
+      response += "I wake up, I'm alive. \n"
     }
 
-    else if(msg.includes('good night')){
+    if(msg.includes('good night')){
       io.emit('paint', 'black')
       io.emit('sleep')
-      response = "I'll be having my wildest dreams."
+      response += "I'll be having my wildest dreams. \n"
     }
 
-    else{response = "All you had to do was say something I'd understand."}
+    if(response == '') response = "All you had to do was say something I'd understand."
   }
   return response
 }
