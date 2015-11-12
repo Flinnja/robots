@@ -1,20 +1,25 @@
 var Cylon = require('cylon')
+
 var colourSpaces = {
   'red': 'FF0000',
   'orange': 'FF9900',
-  'yellow': 'FFBC00',
+  'yellow': 'FFD700',
   'green': '00FF00',
   'blue': '0000FF',
-  'purple': 'AA00FF',
-  'pink': 'FF00FF'
+  'purple': '9400D3',
+  'pink': 'FF00DD',
+  'black': '000000',
+  'white': 'FFFFFF'
 }
+var spheroPort = '/dev/tty.Sphero-YRG-AMP-SPP'
+var awake = false
 
 function taySphere(io){
   Cylon.robot({
     name: 'taySphere',
 
     connections: {
-      sphero: { adaptor: 'sphero', port: '/dev/tty.Sphero-YRG-AMP-SPP'}
+      sphero: { adaptor: 'sphero', port: spheroPort }
     },
 
     devices: {
@@ -22,8 +27,9 @@ function taySphere(io){
     },
 
     work: function(my){
-      dancing = false
-      wandering = false
+      var dancing = false
+      var wandering = false
+      my.sphero.color(colourSpaces["white"])
 
       io.on('wander', function(){
         dancing = false
@@ -38,26 +44,43 @@ function taySphere(io){
       io.on('stop', function(){
         wandering = false
         dancing = false
-        my.sphero.stop()
       })
 
       io.on('paint', function(colour){
-        my.sphero.color(colourSpaces[colour])
+        if(awake) my.sphero.color(colourSpaces[colour])
       })
 
       every((1).second(), function(){
-        if(dancing){
-          my.sphero.roll(20, Math.floor(Math.random() * 360))
-          my.sphero.stop()
+        if(awake){
+          if(dancing){
+            my.sphero.roll(20, Math.floor(Math.random() * 360))
+            my.sphero.stop()
+          }
+          else if(wandering){
+            my.sphero.roll(60, Math.floor(Math.random() * 360))
+          }
         }
-        else if(wandering){
-          my.sphero.roll(60, Math.floor(Math.random() * 360))
-        }
+      })
+
+      my.sphero.on('error', function(err){
+        console.log("Error with the taySphere: ", error)
       })
     }
   })
 
-  Cylon.start()
+  io.on('start', function(){
+    if(!awake){
+      Cylon.start()
+      awake = true
+    }
+  })
+
+  io.on('sleep', function(){
+    if(awake){
+      awake = false
+      Cylon.halt()
+    }
+  })
 }
 
 module.exports = taySphere

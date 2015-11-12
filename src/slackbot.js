@@ -18,7 +18,11 @@ function slackBot(io){
     user = slackBot.getUserByID(message.user)
     if(message.text.includes('tay')){
 
-      if(message.text.includes("hate")){
+      if(message.text.includes("tuesday")){
+        response = "Is it taco tuesday?! :taco:"
+      }
+
+      else if(message.text.includes("hate")){
         response = "Haters gonna hate, hate, hate, hate, hate."
       }
 
@@ -63,6 +67,17 @@ function slackBot(io){
       else if(message.text.includes('stop')){
         io.emit('stop')
         response = "Can't stop, wont stop moving..."
+      }
+
+      else if(message.text.includes('wake up')){
+        io.emit('start')
+        response = "Grab a brush put on a little make up!"
+      }
+
+      else if(message.text.includes('good night')){
+        io.emit('paint', 'black')
+        io.emit('sleep')
+        response = "Maybe see you in your wildest dreams..."
       }
 
       else{response = "Sorry, I don't know what you mean"}
