@@ -20,7 +20,9 @@ function slackBot(io){
 
   slackBot.on('message', function(message){
     var channel = slackBot.getChannelGroupOrDMByID(message.channel)
-    var response = respondTo(message.text, message.user, io)
+    var user = slackBot.getUserByID(message.user)
+    var msgText = message.text.toLowerCase()
+    var response = respondTo(msgText, user, io)
     channel.send(response)
   })
 

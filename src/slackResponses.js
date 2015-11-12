@@ -1,6 +1,17 @@
+var  multi = {
+  greetings: ['hey','hi','hello','whatup',"what's up",'good morning','good evening','greetings'],
+  anyColour: ['random','anything','any','any colour','any color','whatever','surprise'],
+  grey: ['white','grey','gray'],
+  wander: ['wander','stroll','explore']
+}
+
 var respondTo = function(msg,usr,io){
   var response = ''
   if(msg.includes('tay')){
+
+    if(multi.greetings.some( elem => msg.includes(elem) )){
+      response += "Hey there, "+usr.name+", nice to meet you. Where you been?"
+    }
 
     if(msg.includes("tuesday")){
       response += "Is it taco tuesday?! :taco: \n"
@@ -31,9 +42,9 @@ var respondTo = function(msg,usr,io){
       else if(msg.includes('blue')) colour = 'blue'
       else if(msg.includes('purple')) colour = 'purple'
       else if(msg.includes('pink')) colour = 'pink'
-      else if (msg.includes('random') || msg.includes('anything') || msg.includes('any colour') || msg.includes('any color')) colour = 'colour'
+      else if (multi.anyColour.some( elem => msg.includes(elem) )) colour = 'colour'
       else if(msg.includes('black')) response += 'Get out of here, Mick. \n'
-      else if(msg.includes('white') || msg.includes('grey') || msg.includes('gray')) response += "I'm not really into shades of grey, sorry. \n"
+      else if (multi.grey.some( elem => msg.includes(elem) )) response += "I'm not really into shades of grey, sorry. \n"
       if(colour){
         io.emit('paint', colour)
         response += "We are in screaming "+colour+"! \n"
@@ -46,7 +57,7 @@ var respondTo = function(msg,usr,io){
       response += 'I make the moves up as I go! \n'
     }
 
-    if(msg.includes('wander') || msg.includes('stroll') || msg.includes('explore')){
+    if (multi.wander.some( elem => msg.includes(elem) )){
       io.emit('wander')
       response += "I'll find wonderland. \n"
     }
@@ -67,7 +78,7 @@ var respondTo = function(msg,usr,io){
       response += "I'll be having my wildest dreams. \n"
     }
 
-    if(response == '') response = "All you had to do was say something I'd understand."
+    if(!response) response = "All you had to do was say something I'd understand."
   }
   return response
 }
