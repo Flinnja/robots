@@ -29,7 +29,7 @@
       })
 
       socket.on('paint', function(colour){
-        if(colour != black && colour != white){
+        if(colour != 'black' && colour != 'white'){
           setColours(makeColour(colour))
         }
       })
