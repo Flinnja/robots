@@ -69,6 +69,17 @@ function slackBot(io){
         response = "Can't stop, wont stop moving..."
       }
 
+      else if(message.text.includes('wake up')){
+        io.emit('start')
+        response = "Grab a brush put on a little make up!"
+      }
+
+      else if(message.text.includes('good night')){
+        io.emit('paint', 'black')
+        io.emit('sleep')
+        response = "Maybe see you in your wildest dreams."
+      }
+
       else{response = "Sorry, I don't know what you mean"}
       channel.send(response)
     }

@@ -7,9 +7,11 @@ var colourSpaces = {
   'green': '00FF00',
   'blue': '0000FF',
   'purple': 'AA00FF',
-  'pink': 'FF00FF'
+  'pink': 'FF00FF',
+  'black': '000000'
 }
 var spheroPort = '/dev/tty.Sphero-YRG-AMP-SPP'
+var awake = false
 
 function taySphere(io){
   Cylon.robot({
@@ -19,14 +21,13 @@ function taySphere(io){
       sphero: { adaptor: 'sphero', port: spheroPort }
     },
 
-
     devices: {
       sphero: { driver: 'sphero'}
     },
 
     work: function(my){
-      dancing = false
-      wandering = false
+      var dancing = false
+      var wandering = false
 
       io.on('wander', function(){
         dancing = false
@@ -49,12 +50,14 @@ function taySphere(io){
       })
 
       every((1).second(), function(){
-        if(dancing){
-          my.sphero.roll(20, Math.floor(Math.random() * 360))
-          my.sphero.stop()
-        }
-        else if(wandering){
-          my.sphero.roll(60, Math.floor(Math.random() * 360))
+        if(awake){
+          if(dancing){
+            my.sphero.roll(20, Math.floor(Math.random() * 360))
+            my.sphero.stop()
+          }
+          else if(wandering){
+            my.sphero.roll(60, Math.floor(Math.random() * 360))
+          }
         }
       })
 
@@ -64,12 +67,19 @@ function taySphere(io){
     }
   })
 
-  try{
-    Cylon.start()
-  }
-  catch(err){
-    console.log(err)
-  }
+  io.on('start', function(){
+    if(!awake){
+      Cylon.start()
+      awake = true
+    }
+  })
+
+  io.on('sleep', function(){
+    if(awake){
+      awake = false
+      Cylon.halt()
+    }
+  })
 }
 
 module.exports = taySphere
