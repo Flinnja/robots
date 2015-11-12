@@ -8,19 +8,21 @@ h1{
   text-align: center;
 }
 
+div{
+  text-align: center;
+}
+
 p{
-  padding-top: 5%;
-  padding-left: 35%;
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 1.5em;
   display: inline-block;
 }
 
 .status{
-  padding-left: 5px;
+  padding-left: 8px;
 }
 
 .body-status{
-  padding-left: 5px;
+  padding-left: 8px;
 }
 
