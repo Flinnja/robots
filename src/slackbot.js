@@ -77,7 +77,7 @@ function slackBot(io){
       else if(message.text.includes('good night')){
         io.emit('paint', 'black')
         io.emit('sleep')
-        response = "Maybe see you in your wildest dreams."
+        response = "Maybe see you in your wildest dreams..."
       }
 
       else{response = "Sorry, I don't know what you mean"}

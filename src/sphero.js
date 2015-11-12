@@ -3,12 +3,13 @@ var Cylon = require('cylon')
 var colourSpaces = {
   'red': 'FF0000',
   'orange': 'FF9900',
-  'yellow': 'FFBC00',
+  'yellow': 'FFD700',
   'green': '00FF00',
   'blue': '0000FF',
-  'purple': 'AA00FF',
-  'pink': 'FF00FF',
-  'black': '000000'
+  'purple': '9400D3',
+  'pink': 'FF00DD',
+  'black': '000000',
+  'white': 'FFFFFF'
 }
 var spheroPort = '/dev/tty.Sphero-YRG-AMP-SPP'
 var awake = false
@@ -28,6 +29,7 @@ function taySphere(io){
     work: function(my){
       var dancing = false
       var wandering = false
+      my.sphero.color(colourSpaces["white"])
 
       io.on('wander', function(){
         dancing = false
@@ -42,11 +44,10 @@ function taySphere(io){
       io.on('stop', function(){
         wandering = false
         dancing = false
-        my.sphero.stop()
       })
 
       io.on('paint', function(colour){
-        my.sphero.color(colourSpaces[colour])
+        if(awake) my.sphero.color(colourSpaces[colour])
       })
 
       every((1).second(), function(){
