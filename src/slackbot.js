@@ -12,7 +12,7 @@ function slackBot(io){
   slackBot.on('open', function(){
     var channel = slackBot.getChannelGroupOrDMByID('C0E5V3CCC')
     console.log("Connected to "+slackBot.team.name+" as "+slackBot.self.name)
-    channel.send("I'm awake, I'm awake.")
+    channel.send("I'm back!")
   })
 
   slackBot.on('message', function(message){
@@ -73,14 +73,14 @@ function slackBot(io){
       }
 
       else if(message.text.includes('wake up')){
-        io.emit('start')
-        response = "Grab a brush put on a little make up!"
+        io.emit('wake')
+        response = 'Hold on a bit...'
       }
 
       else if(message.text.includes('good night')){
         io.emit('paint', 'black')
         io.emit('sleep')
-        response = "Maybe see you in your wildest dreams..."
+        response = 'Maybe see you in your wildest dreams...'
       }
 
       else{response = "Sorry, I don't know what you mean"}

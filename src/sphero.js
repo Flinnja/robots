@@ -23,7 +23,7 @@ function taySphere(io){
     },
 
     devices: {
-      sphero: { driver: 'sphero'}
+      sphero: { driver: 'sphero', connection: 'sphero'}
     },
 
     work: function(my){
@@ -68,7 +68,7 @@ function taySphere(io){
     }
   })
 
-  io.on('start', function(){
+  io.on('wake', function(){
     if(!awake){
       Cylon.start()
       awake = true
