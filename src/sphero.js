@@ -1,4 +1,5 @@
 var Cylon = require('cylon')
+
 var colourSpaces = {
   'red': 'FF0000',
   'orange': 'FF9900',
@@ -8,14 +9,16 @@ var colourSpaces = {
   'purple': 'AA00FF',
   'pink': 'FF00FF'
 }
+var spheroPort = '/dev/tty.Sphero-YRG-AMP-SPP'
 
 function taySphere(io){
   Cylon.robot({
     name: 'taySphere',
 
     connections: {
-      sphero: { adaptor: 'sphero', port: '/dev/tty.Sphero-YRG-AMP-SPP'}
+      sphero: { adaptor: 'sphero', port: spheroPort }
     },
+
 
     devices: {
       sphero: { driver: 'sphero'}
@@ -54,10 +57,19 @@ function taySphere(io){
           my.sphero.roll(60, Math.floor(Math.random() * 360))
         }
       })
+
+      my.sphero.on('error', function(err){
+        console.log("Error with the taySphere: ", error)
+      })
     }
   })
 
-  Cylon.start()
+  try{
+    Cylon.start()
+  }
+  catch(err){
+    console.log(err)
+  }
 }
 
 module.exports = taySphere

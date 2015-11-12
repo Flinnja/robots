@@ -18,7 +18,11 @@ function slackBot(io){
     user = slackBot.getUserByID(message.user)
     if(message.text.includes('tay')){
 
-      if(message.text.includes("hate")){
+      if(message.text.includes("tuesday")){
+        response = "Is it taco tuesday?! :taco:"
+      }
+
+      else if(message.text.includes("hate")){
         response = "Haters gonna hate, hate, hate, hate, hate."
       }
 

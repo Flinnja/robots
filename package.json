@@ -6,7 +6,8 @@
   "scripts": {
     "devstart": "nodemon ./index.js",
     "start": "node ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,19 @@
     "slack-client": "^1.4.1",
     "socket.io": "^1.3.7",
     "sphero": "flinnja/sphero.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.4",
+    "babel-core": "^6.1.4",
+    "babel-preset-es2015": "^6.1.4",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.2",
+    "sinon-chai": "^2.8.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
   }
 }
