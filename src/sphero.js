@@ -47,7 +47,10 @@ function taySphere(io){
       })
 
       io.on('paint', function(colour){
-        if(awake) my.sphero.color(colourSpaces[colour])
+        if(awake){
+          if(colour = 'random') my.sphero.randomColor()
+          else my.sphero.color(colourSpaces[colour])
+        }
       })
 
       every((1).second(), function(){
