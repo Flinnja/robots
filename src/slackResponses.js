@@ -75,7 +75,7 @@ var respondTo = function(msg,usr,io){
     if(msg.includes('good night')){
       io.emit('paint', 'black')
       io.emit('sleep')
-      response += "I'll be having my wildest dreams. \n"
+      response += "People like me are gone forever when you say goodbye. \n"
     }
 
     if(!response) response = "All you had to do was say something I'd understand."
