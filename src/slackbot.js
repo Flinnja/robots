@@ -10,12 +10,15 @@ function slackBot(io){
   slackBot = new Slack(slackToken, autoRecconect, autoMark)
 
   slackBot.on('open', function(){
+    var channel = slackBot.getChannelGroupOrDMByID('C0E5V3CCC')
     console.log("Connected to "+slackBot.team.name+" as "+slackBot.self.name)
+    channel.send("I'm awake, I'm awake.")
   })
 
   slackBot.on('message', function(message){
-    channel = slackBot.getChannelGroupOrDMByID(message.channel)
-    user = slackBot.getUserByID(message.user)
+    // console.log(message)
+    var channel = slackBot.getChannelGroupOrDMByID(message.channel)
+    var user = slackBot.getUserByID(message.user)
     if(message.text.includes('tay')){
 
       if(message.text.includes("tuesday")){
