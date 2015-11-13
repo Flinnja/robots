@@ -12,6 +12,11 @@ var respondTo = function(msg,usr,dm,io){
       response += "Is it taco tuesday?! :taco: \n"
     }
 
+    if(msg.includes("thanks")){
+      io.emit('chat')
+      response += "You're welcome, "+user.name+".\n"
+    }
+
     if(msg.includes("awake") && msg.includes('?')){
       io.emit('chat')
       response += "I'm wide awake, yeah. \n"
