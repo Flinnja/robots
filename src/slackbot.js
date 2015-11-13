@@ -21,7 +21,6 @@ function slackBot(io){
   slackBot.on('message', function(message){
     var dm = false
     var channel = slackBot.getChannelGroupOrDMByID(message.channel)
-    // console.log(channel)
     if(channel.id.charAt(0) == 'D') dm = true
     var user = slackBot.getUserByID(message.user)
     var msgText = message.text.toLowerCase()

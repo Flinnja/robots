@@ -16,6 +16,10 @@
 
       var socket = io()
 
+      socket.on('chat', function(user){
+        $('.status').text('Chatting away')
+      })
+
       socket.on('dance', function(){
         $('.status').text('Dancing!')
       })
@@ -32,16 +36,15 @@
         if(colour != 'black' && colour != 'white'){
           setColours(makeColour(colour))
         }
+        $('.status').text('Colouring your life')
       })
 
       socket.on('wake', function(){
-        $('.status').text('Awake')
-        $('.body-status').text("Online")
+        $('.body-status').text("Awake")
       })
 
       socket.on('sleep', function(){
-        $('.status').text('Asleep')
-        $('.body-status').text("Offline")
+        $('.body-status').text("Asleep")
       })
     </script>
     <h1>Welcome to the home of tayBot Prime</h1>
