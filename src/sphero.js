@@ -53,8 +53,12 @@ function taySphere(io){
       })
 
       io.on('roll', function(opts){
+        var dancing = false
+        var wandering = false
+
         dir = Number(opts.dir)
         dur = Number(opts.time)
+
         my.sphero.roll(60, dir)
         after((dur).seconds(), function(){
           my.sphero.stop()
