@@ -2,7 +2,8 @@ var  multi = {
   greetings: ['hey','hi','hello','whatup',"what's up",'good morning','good evening','greetings'],
   anyColour: ['random','anything','any','any colour','any color','whatever','surprise'],
   grey: ['white','grey','gray'],
-  wander: ['wander','stroll','explore']
+  wander: ['wander','stroll','explore'],
+  colours: ['red','orange','yellow','green','blue','purple','pink']
 }
 
 var respondTo = function(msg,usr,io){
@@ -35,13 +36,12 @@ var respondTo = function(msg,usr,io){
 
     if(msg.includes("paint")){
       var colour = null
-      if(msg.includes('red')) colour = 'red'
-      else if(msg.includes('orange')) colour = 'orange'
-      else if(msg.includes('yellow')) colour = 'yellow'
-      else if(msg.includes('green')) colour = 'green'
-      else if(msg.includes('blue')) colour = 'blue'
-      else if(msg.includes('purple')) colour = 'purple'
-      else if(msg.includes('pink')) colour = 'pink'
+
+      if(multi.colours.some(function(elem){
+        colour = elem
+        return msg.includes(elem)
+      })){}
+
       else if (multi.anyColour.some( elem => msg.includes(elem) )) colour = 'colour'
       else if(msg.includes('black')) response += 'Get out of here, Mick. \n'
       else if (multi.grey.some( elem => msg.includes(elem) )) response += "I'm not really into shades of grey, sorry. \n"
