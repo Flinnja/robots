@@ -20,8 +20,9 @@ var respondTo = function(msg,usr,dm,io){
       response += "Is it taco tuesday?! :taco: \n"
     }
 
-    if(msg.includes("awake?")){
-      response += "I've been waiting for you. \n"
+    if(msg.includes("awake") && msg.includes('?')){
+      io.emit('chat')
+      response += "I'm wide awake, yeah. \n"
     }
 
     if(msg.includes("hate")){
@@ -86,6 +87,9 @@ var respondTo = function(msg,usr,dm,io){
       io.emit('sleep')
       response += "People like me are gone forever when you say goodbye. \n"
     }
+
+    //SPECIAL DEBUGGING MESSAGE RESPONSES
+    if(msg == 'clear it all out tay') response = ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n."
 
     if(!response){
       response = "All you had to do was say something I'd understand."
