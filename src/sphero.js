@@ -59,7 +59,7 @@ function taySphere(io){
         dir = Number(opts.dir)
         dur = Number(opts.time)
 
-        my.sphero.roll(60, dir)
+        my.sphero.roll(100, dir)
         after((dur).seconds(), function(){
           my.sphero.stop()
         })
