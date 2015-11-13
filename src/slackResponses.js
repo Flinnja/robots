@@ -4,7 +4,7 @@ var respondTo = function(msg,usr,dm,io){
 
     if(multi.greetings.some( elem => msg.includes(elem) )){
       io.emit('chat')
-      response += "Hey there, "+usr.name+", nice to meet you. Where you been?"
+      response += "Hey there, "+usr.name+", nice to meet you. Where you been?\n"
     }
 
     if(msg.includes("tuesday")){

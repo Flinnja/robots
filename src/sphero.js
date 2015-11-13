@@ -53,8 +53,8 @@ function taySphere(io){
       })
 
       io.on('roll', function(opts){
-        var dancing = false
-        var wandering = false
+        dancing = false
+        wandering = false
 
         dir = Number(opts.dir)
         dur = Number(opts.time)
@@ -68,6 +68,7 @@ function taySphere(io){
       io.on('stop', function(){
         wandering = false
         dancing = false
+        my.sphero.stop()
       })
 
       io.on('paint', function(colour){
