@@ -18,6 +18,10 @@ var respondTo = function(msg,usr,dm,io){
       response += "Is it taco tuesday?! :taco: \n"
     }
 
+    if(msg.includes("awake?")){
+      response += "I've been waiting for you. \n"
+    }
+
     if(msg.includes("hate")){
       response += "Haters gonna hate, hate, hate, hate, hate. \n"
     }
