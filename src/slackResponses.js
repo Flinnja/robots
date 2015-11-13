@@ -1,14 +1,14 @@
 var  multi = {
   greetings: ['hey','hi','hello','whatup',"what's up",'good morning','good evening','greetings'],
+  wander: ['wander','stroll','explore'],
+  colours: ['red','orange','yellow','green','blue','purple','pink'],
   anyColour: ['random','anything','any','any colour','any color','whatever','surprise'],
   grey: ['white','grey','gray'],
-  wander: ['wander','stroll','explore'],
-  colours: ['red','orange','yellow','green','blue','purple','pink']
 }
 
-var respondTo = function(msg,usr,io){
+var respondTo = function(msg,usr,dm,io){
   var response = ''
-  if(msg.includes('tay')){
+  if(msg.includes('tay') || dm){
 
     if(multi.greetings.some( elem => msg.includes(elem) )){
       response += "Hey there, "+usr.name+", nice to meet you. Where you been?"
