@@ -78,6 +78,16 @@ var respondTo = function(msg,usr,dm,io){
       response += "Can't stop, wont stop moving... \n"
     }
 
+    if(msg.includes('calibrate')){
+      io.emit('calibrate')
+      response += 'You spin me around.'
+    }
+
+    if(msg.includes('done calibrating')){
+      io.emit('finishCalibrate')
+      response += "I'm just a bot on a mission but I'm ready to fly."
+    }
+
     if(msg.includes('wake up')){
       io.emit('wake')
       response += "I wake up, I'm alive. \n"

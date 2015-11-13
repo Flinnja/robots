@@ -31,6 +31,16 @@ function taySphere(io){
       var wandering = false
       my.sphero.color(colourSpaces["white"])
 
+      io.on('calibrate', function(){
+        my.sphero.color('000000')
+        my.sphero.startCalibration()
+      })
+
+      io.on('finishCalibrate', function(){
+        my.sphero.color('FFFFFF')
+        my.sphero.finishCalibration()
+      })
+
       io.on('wander', function(){
         dancing = false
         wandering = true
