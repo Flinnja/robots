@@ -7,52 +7,25 @@
     <script src='js/randColors.js'></script>
   </head>
   <body>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function(){
         setColours(makeColour('colour'))
       })
-
-      var socket = io()
-
-      socket.on('chat', function(user){
-        $('.status').text('Chatting away')
-      })
-
-      socket.on('dance', function(){
-        $('.status').text('Dancing!')
-      })
-
-      socket.on('wander', function(){
-        $('.status').text('Going for a stroll')
-      })
-
-      socket.on('stop', function(){
-        $('.status').text("J chillin'")
-      })
-
-      socket.on('paint', function(colour){
-        if(colour != 'black' && colour != 'white'){
-          setColours(makeColour(colour))
-        }
-        $('.status').text('Colouring your life')
-      })
-
-      socket.on('wake', function(){
-        $('.body-status').text("Awake")
-      })
-
-      socket.on('sleep', function(){
-        $('.body-status').text("Asleep")
-      })
     </script>
+    <script src='js/indexSetup.js'></script>
+
     <h1>Welcome to the home of tayBot Prime</h1>
+
     <div>
       <p>tayBot is currently: </p><p class="status">Out of touch</p>
     </div>
+
     <div>
       <p>tayBot RL is currently: </p><p class="body-status">Offline.</p>
     </div>
+
   </body>
 </html>
