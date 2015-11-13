@@ -11,10 +11,12 @@ var respondTo = function(msg,usr,dm,io){
   if(msg.includes('tay') || dm){
 
     if(multi.greetings.some( elem => msg.includes(elem) )){
+      io.emit('chat')
       response += "Hey there, "+usr.name+", nice to meet you. Where you been?"
     }
 
     if(msg.includes("tuesday")){
+      io.emit('chat')
       response += "Is it taco tuesday?! :taco: \n"
     }
 
@@ -23,18 +25,22 @@ var respondTo = function(msg,usr,dm,io){
     }
 
     if(msg.includes("hate")){
+      io.emit('chat')
       response += "Haters gonna hate, hate, hate, hate, hate. \n"
     }
 
     if(msg.includes("play")){
+      io.emit('chat')
       response += "Players gonna play, play, play, play play. \n"
     }
 
     if(msg.includes("fake")){
+      io.emit('chat')
       response += "Fakers gonna fake, fake, fake, fake, fake. \n"
     }
 
     if(msg.includes("heartbreak")){
+      io.emit('chat')
       response += "Heartbreakers gonna break, break, break, break, break. \n"
     }
 
@@ -77,12 +83,14 @@ var respondTo = function(msg,usr,dm,io){
     }
 
     if(msg.includes('good night')){
-      io.emit('paint', 'black')
       io.emit('sleep')
       response += "People like me are gone forever when you say goodbye. \n"
     }
 
-    if(!response) response = "All you had to do was say something I'd understand."
+    if(!response){
+      response = "All you had to do was say something I'd understand."
+      io.emit('chat')
+    }
   }
   return response
 }
