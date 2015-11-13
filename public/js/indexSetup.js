@@ -16,6 +16,10 @@ socket.on('stop', function(){
   $('.status').text("J chillin'")
 })
 
+socket.on('roll', function(){
+  $('.status').text("Makin' moves")
+})
+
 socket.on('paint', function(colour){
   if(colour != 'black' && colour != 'white'){
     setColours(makeColour(colour))

@@ -1,11 +1,3 @@
-var  multi = {
-  greetings: ['hey','hi','hello','whatup',"what's up",'good morning','good evening','greetings'],
-  wander: ['wander','stroll','explore'],
-  colours: ['red','orange','yellow','green','blue','purple','pink'],
-  anyColour: ['random','anything','any','any colour','any color','whatever','surprise'],
-  grey: ['white','grey','gray'],
-}
-
 var respondTo = function(msg,usr,dm,io){
   var response = ''
   if(msg.includes('tay') || dm){
@@ -68,9 +60,23 @@ var respondTo = function(msg,usr,dm,io){
       response += 'I make the moves up as I go! \n'
     }
 
-    if (multi.wander.some( elem => msg.includes(elem) )){
+    if(multi.wander.some( elem => msg.includes(elem) )){
       io.emit('wander')
       response += "I'll find wonderland. \n"
+    }
+
+    if(msg.includes('roll')){
+      if(msg.includes('tay')) response += 'You have to use direct messages to tell me where to roll.\n'
+      else{
+        inst = msg.split(' ')
+        if(inst.length == 4){
+          direction = directions[inst[1]]
+          secs = inst[2]
+          io.emit('roll', {dir: direction, time: secs})
+          response += 'Rolling '+inst[1]+' in a straight line down'
+        }
+        else response += 'Maybe that got lost in translation.\n'
+      }
     }
 
     if(msg.includes('stop')){
@@ -99,7 +105,7 @@ var respondTo = function(msg,usr,dm,io){
     }
 
     //SPECIAL DEBUGGING MESSAGE RESPONSES
-    if(msg == 'clear it all out tay') response = ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n."
+    if(msg == 'tay clear') response = ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n."
 
     if(!response){
       response = "All you had to do was say something I'd understand."
@@ -107,6 +113,21 @@ var respondTo = function(msg,usr,dm,io){
     }
   }
   return response
+}
+
+var  multi = {
+  greetings: ['hey','hi','hello','whatup',"what's up",'good morning','good evening','greetings'],
+  wander: ['wander','stroll','explore'],
+  colours: ['red','orange','yellow','green','blue','purple','pink'],
+  anyColour: ['random','anything','any','any colour','any color','whatever','surprise'],
+  grey: ['white','grey','gray'],
+}
+
+var directions = {
+  forward: 0,
+  back: 180,
+  right: 90,
+  left: 270
 }
 
 module.exports = respondTo

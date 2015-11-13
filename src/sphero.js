@@ -30,6 +30,7 @@ function taySphere(io){
       var dancing = false
       var wandering = false
       my.sphero.color(colourSpaces["white"])
+      my.sphero.setMotionTimeout(10000)
 
       io.on('calibrate', function(){
         my.sphero.color('000000')
@@ -49,6 +50,15 @@ function taySphere(io){
       io.on('dance', function(){
         wandering = false
         dancing = true
+      })
+
+      io.on('roll', function(opts){
+        dir = Number(opts.dir)
+        dur = Number(opts.time)
+        my.sphero.roll(60, dir)
+        after((dur).seconds(), function(){
+          my.sphero.stop()
+        })
       })
 
       io.on('stop', function(){
@@ -90,6 +100,7 @@ function taySphere(io){
 
   io.on('sleep', function(){
     if(awake){
+      io.emit('paint', 'black')
       awake = false
       Cylon.halt()
     }
