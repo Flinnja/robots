@@ -16,26 +16,27 @@
 ## Available commands
 These are commands that you can send to your slack bot that are currently set up to have some sort of response. Currently all commands will be acted upon if they are sent via a direct message to the bot or if they are sent over a channel the bot is a member of and they include the word "tay" (the name of the original bot, you can change this on src/slackResponses:3)
 All commands currently send a chat response as well as any other action they take. Commands ignore capitalization. Many commands change text on the page served at index.html in minor ways.
-|Command contains words |Action |Notes|
-|-----------------------|-------|-----|
-|Hey OR hi OR hello     |Chat response only|Full wordlist on line 124|
-|Tuesday                |Chat response only|none|
-|Thanks                 |Chat response only|none|
-|Awake AND ?            |Chat response only|none|
-|Hate                   |Chat response only|none|
-|Play                   |Chat response only|none|
-|Fake                   |Chat response only|none|
-|Heartbreak             |Chat response only|none|
-|Paint AND (a colour)   |Sets page at index.html and sphero's LEDs to chosen colour|Colour list on line 126-128|
-|Dance                  |Makes sphero wiggle on the spot|none|
-|Wander                 |Makes the sphero roll around in random directions|More commands line 125|
-|Roll (direction) (number) seconds)|Makes the sphero roll in a specified direction for a certain amount of time|Strict syntax, only available in direct messages|
-|Stop                   |Stop the sphero if it is moving|none|
-|Calibrate              |Put sphero in calibration mode|none|
-|Done calibrating       |Turn off calibration mode|none|
-|Wake up                |Attempt to connect to the sphero|This crashes the server if the sphero can't be found(BUG)|
-|Good night             |Disconnect from the sphero|After calling this using 'wake up' will not be able to find the sphero(BUG)|
-|tay clear              |Responds in chat with many newlines to clear spam, for testing|Strict syntax|
+
+| Command contains words | Action | Notes|
+| ---------------------- | ------ | ---- |
+| Hey OR hi OR hello     | Chat response only | Full wordlist on line 124 |
+| Tuesday                | Chat response only | none |
+| Thanks                 | Chat response only | none |
+| Awake AND ?            | Chat response only | none |
+| Hate                   | Chat response only | none |
+| Play                   | Chat response only | none |
+| Fake                   | Chat response only | none |
+| Heartbreak             | Chat response only | none |
+| Paint AND (a colour)   | Sets page at index.html and sphero's LEDs to chosen colour | Colour list on line 126-128 |
+| Dance                  | Makes sphero wiggle on the spot | none |
+| Wander                 | Makes the sphero roll around in random directions | More commands line 125 |
+| Roll (direction) (number) seconds)| Makes the sphero roll in a specified direction for a certain amount of time | Strict syntax, only available in direct messages |
+| Stop                   | Stop the sphero if it is moving | none |
+| Calibrate              | Put sphero in calibration mode | none |
+| Done calibrating       | Turn off calibration mode | none |
+| Wake up                | Attempt to connect to the sphero | This crashes the server if the sphero can't be found(BUG) |
+| Good night             | Disconnect from the sphero | After calling this using 'wake up' will not be able to find the sphero(BUG) |
+| tay clear              | Responds in chat with many newlines to clear spam, for testing | Strict syntax |
 
 Any other message sent to the bot will only get a chat response.
 
